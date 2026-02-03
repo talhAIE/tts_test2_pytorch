@@ -6,27 +6,27 @@ import gdown
 
 FILES_DICT = {  
     # TACOTRON  
-    "tacotron2_ar_mse.pth": {
-        "path": "pretrained/tacotron2_ar_mse.pth",
-        "url": "https://drive.google.com/file/d/1GCu-ZAcfJuT5qfzlKItcNqtuVNa7CNy9/view?usp=sharing",
-        "download": True,
-    },
-    "tacotron2_ar_adv.pth": {
-        "path": "pretrained/tacotron2_ar_adv.pth",
-        "url": "https://drive.google.com/file/d/1FusCFZIXSVCQ9Q6PLb91GIkEnhn_zWRS/view?usp=sharing",
-        "download": True,
-    },
-    # FASTPITCH
-    "fastpitch_ar_mse.pth": {
-        "path": "pretrained/fastpitch_ar_mse.pth",
-        "url": "https://drive.google.com/file/d/1sliRc62wjPTnPWBVQ95NDUgnCSH5E8M0/view?usp=sharing",
-        "download": True,
-    },
-    "fastpitch_ar_adv.pth": {
-        "path": "pretrained/fastpitch_ar_adv.pth",
-        "url": "https://drive.google.com/file/d/1-vZOhi9To_78-yRslC6sFLJBUjwgJT-D/view?usp=sharing",
-        "download": True,
-    },
+    # "tacotron2_ar_mse.pth": {
+    #     "path": "pretrained/tacotron2_ar_mse.pth",
+    #     "url": "https://drive.google.com/file/d/1GCu-ZAcfJuT5qfzlKItcNqtuVNa7CNy9/view?usp=sharing",
+    #     "download": True,
+    # },
+    # "tacotron2_ar_adv.pth": {
+    #     "path": "pretrained/tacotron2_ar_adv.pth",
+    #     "url": "https://drive.google.com/file/d/1FusCFZIXSVCQ9Q6PLb91GIkEnhn_zWRS/view?usp=sharing",
+    #     "download": True,
+    # },
+    # # FASTPITCH
+    # "fastpitch_ar_mse.pth": {
+    #     "path": "pretrained/fastpitch_ar_mse.pth",
+    #     "url": "https://drive.google.com/file/d/1sliRc62wjPTnPWBVQ95NDUgnCSH5E8M0/view?usp=sharing",
+    #     "download": True,
+    # },
+    # "fastpitch_ar_adv.pth": {
+    #     "path": "pretrained/fastpitch_ar_adv.pth",
+    #     "url": "https://drive.google.com/file/d/1-vZOhi9To_78-yRslC6sFLJBUjwgJT-D/view?usp=sharing",
+    #     "download": True,
+    # },
     "fastpitch_ar_ms.pth": {
         "path": "pretrained/fastpitch_ar_ms.pth",
         "url": "https://drive.google.com/file/d/18IYUSRXvLErVjaDORj_TKzUxs90l61Ja/view?usp=sharing",
