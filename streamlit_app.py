@@ -148,9 +148,6 @@ with col1:
 with col2:
     speed = st.slider("Speed:", 0.5, 1.5, 1.0, 0.1)
 
-denoise = st.checkbox("Denoise (Cleaner audio, slower)", value=True)
-denoise_val = 0.005 if denoise else 0.0
-
 if st.button("Generate Audio"):
     if not model:
         st.error("Model not loaded.")
@@ -165,7 +162,7 @@ if st.button("Generate Audio"):
                         text_input,
                         speed=speed,
                         speaker_id=speaker_id,
-                        denoise=denoise_val
+                        denoise=0.0
                     )
                 
                 # Play Audio
