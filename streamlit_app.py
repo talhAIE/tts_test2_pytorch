@@ -18,7 +18,6 @@ st.markdown("Generate Arabic speech from text using FastPitch (Multispeaker).")
 @st.cache_resource
 def load_model():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    st.write(f"Loading model on: **{device.upper()}**")
     
     # Paths
     model_path = 'pretrained/fastpitch_ar_ms.pth'
@@ -50,18 +49,27 @@ def load_model():
     
     root_dir = pathlib.Path(__file__).parent
 
+    # Check if download is needed
+    needs_download = False
     for item in files_to_check:
         p = root_dir.joinpath(item['path'])
         if not p.exists():
-            st.info(f"Downloading {item['path']}...")
-            if not p.parent.exists():
-                p.parent.mkdir(parents=True, exist_ok=True)
-            gdown.download(item['url'], output=p.as_posix(), quiet=False, fuzzy=True)
+            needs_download = True
+            break
+            
+    if needs_download:
+        with st.spinner("Preparing system... (This may take a minute on first run)"):
+            for item in files_to_check:
+                p = root_dir.joinpath(item['path'])
+                if not p.exists():
+                    if not p.parent.exists():
+                        p.parent.mkdir(parents=True, exist_ok=True)
+                    # quiet=True suppresses terminal output
+                    gdown.download(item['url'], output=p.as_posix(), quiet=True, fuzzy=True)
 
     # Ensure config.json exists
     import json
     if not os.path.exists(vocoder_config_path):
-        st.info(f"Creating {vocoder_config_path}...")
         config_data = {
             "resblock": "1",
             "num_gpus": 0,
@@ -101,7 +109,7 @@ def load_model():
         return None
 
     # Load Model
-    # Explicitly using FastPitch2Wave for end-to-end inference
+    # Explicitly using FastPitch2Wave for endto-end inference
     model = FastPitch2Wave(
         model_sd_path=model_path,
         vocoder_sd=vocoder_path,
@@ -128,14 +136,11 @@ col1, col2 = st.columns(2)
 
 with col1:
     # Speaker Selection
-    # Based on repo documentation/inference: 0 is usually the base speaker.
-    # Multispeaker model: "another male voice and two female voices have been added"
-    # Often: 0=Ref Male, 1=Male, 2=Female, 3=Female (this is a guess, need to verify or let user explore)
     speaker_map = {
-        "Speaker 0 (Male 1)": 0,
-        "Speaker 1 (Male 2)": 1,
-        "Speaker 2 (Female 1)": 2,
-        "Speaker 3 (Female 2)": 3
+        "Male 1": 0,
+        "Male 2": 1,
+        "Female 1": 2,
+        "Female 2": 3
     }
     selected_speaker_label = st.selectbox("Select Voice:", list(speaker_map.keys()))
     speaker_id = speaker_map[selected_speaker_label]
