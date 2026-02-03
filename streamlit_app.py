@@ -13,7 +13,7 @@ from vocoder import load_hifigan
 st.set_page_config(page_title="Arabic TTS", page_icon="🎙️")
 
 st.title("🎙️ Arabic Text-to-Speech")
-st.markdown("Generate Arabic speech from text using FastPitch (Multispeaker).")
+st.markdown("Generate Arabic speech from text.")
 
 @st.cache_resource
 def load_model():
